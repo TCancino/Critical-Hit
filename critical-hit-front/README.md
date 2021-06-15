@@ -1,4 +1,4 @@
-# recordstore-front
+# critical-hit-front
 
 > A Vue.js front-end app for a Ruby on Rails API backend app.
 
