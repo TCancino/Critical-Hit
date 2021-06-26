@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Address < ApplicationRecord
   field :name, type: String # Nombre de referencia para el usuario Ej: "casa", "oficina", etc
   field :address1, type: String # Calle+numero

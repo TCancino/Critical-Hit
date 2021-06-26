@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PurchaseOrder < ApplicationRecord
   field :date, type: Date # Fecha de emision
   field :status, type: String # Procesando, Pago aceptado, Enviado, Entregado, Preventa, Cancelado

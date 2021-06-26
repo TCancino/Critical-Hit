@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
   field :status, type: String # Disponible, Sin Stock, No disponible/Oculto, Preventa
   field :name, type: String
