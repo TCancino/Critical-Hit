@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class RecordsController < ApplicationController
       before_action :authorize_access_request!
-      before_action :set_record, only: [:show, :update, :destroy]
+      before_action :set_record, only: %i[show update destroy]
 
       # GET /records
       def index
@@ -42,15 +44,16 @@ module Api
       end
 
       private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_record
-          @record = current_user.records.find(params[:id])
-        end
 
-        # Only allow a trusted parameter "white list" through.
-        def record_params
-          params.require(:record).permit(:title, :year, :artist_id)
-        end
+      # Use callbacks to share common setup or constraints between actions.
+      def set_record
+        @record = current_user.records.find(params[:id])
+      end
+
+      # Only allow a trusted parameter "white list" through.
+      def record_params
+        params.require(:record).permit(:title, :year, :artist_id)
+      end
     end
   end
 end

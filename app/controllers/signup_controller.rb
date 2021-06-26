@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SignupController < ApplicationController
   def create
     user = User.new(user_params)
@@ -10,7 +12,7 @@ class SignupController < ApplicationController
       response.set_cookie(JWTSessions.access_cookie,
                           value: tokens[:access],
                           httponly: true,
-                          secure: Rails.env.production? )
+                          secure: Rails.env.production?)
 
       render json: { csrf: tokens[:csrf] }
     else
@@ -18,10 +20,9 @@ class SignupController < ApplicationController
     end
   end
 
-
   private
 
-    def user_params
-      params.permit(:email, :password, :password_confirmation)
-    end
+  def user_params
+    params.permit(:email, :password, :password_confirmation)
+  end
 end
