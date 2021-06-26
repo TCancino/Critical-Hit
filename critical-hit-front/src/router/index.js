@@ -4,6 +4,9 @@ import Signin from '@/components/Login/Signin.vue'
 import Signup from '@/components/Login/Signup.vue'
 import Records from '@/components/records/Records.vue'
 import Artists from '@/components/artists/Artists.vue'
+import LandingPage from '@/components/home/LandingPage.vue'
+import Catalog from '@/components/catalog/Catalog.vue'
+import Inventory from '@/components/inventory/Products.vue'
 
 Vue.use(Router)
 
@@ -29,6 +32,21 @@ export default new Router({
       path: '/signup',
       name: 'Signup',
       component: Signup
+    },
+    {
+      path: '/home',
+      name: 'LandingPage',
+      component: LandingPage
+    },
+    {
+      path: '/catalogo',
+      name: 'Catalog',
+      component: Catalog
+    },
+    {
+      path: '/inventario',
+      name: 'Inventory',
+      component: Inventory
     }
   ]
 })

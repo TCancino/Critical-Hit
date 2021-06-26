@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :records
       resources :artists
+      resources :products
     end
   end
 
