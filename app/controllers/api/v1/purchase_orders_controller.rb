@@ -1,4 +1,6 @@
-# frozen_string_literal: true
-
-class PurchaseOrdersController < ApplicationController
+module Api
+  module V1
+    class PurchaseOrdersController < ApplicationController
+    end
+  end
 end
