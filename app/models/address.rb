@@ -7,5 +7,5 @@ class Address < ApplicationRecord
   field :region, type: String #Region
   field :country, type: String #Pais
 
-  belongs_to :user
+  belongs_to :user  
 end
