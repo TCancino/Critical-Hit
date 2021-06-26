@@ -9,4 +9,8 @@
 - Gem [`redis 4.1.0`](https://github.com/redis/redis-rb)
 - Gem [`jwt-sessions`](https://github.com/tuwukee/jwt_sessions)
 
+### Run
+
+- `sudo apt install redis-server`
+
 

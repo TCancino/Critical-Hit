@@ -1,4 +1,6 @@
-# frozen_string_literal: true
-
-class ProductsController < ApplicationController
+module Api
+  module V1
+    class ProductsController < ApplicationController
+    end
+  end
 end

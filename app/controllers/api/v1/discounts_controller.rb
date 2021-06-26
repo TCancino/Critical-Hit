@@ -1,4 +1,6 @@
-# frozen_string_literal: true
-
-class DiscountsController < ApplicationController
+module Api
+  module V1
+    class DiscountsController < ApplicationController
+    end
+  end
 end
