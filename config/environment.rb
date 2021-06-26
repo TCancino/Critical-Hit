@@ -5,3 +5,5 @@ require_relative 'application'
 
 # Initialize the Rails application.
 Rails.application.initialize!
+
+RUBYOPT = '-W:no-deprecated -W:no-experimental'
