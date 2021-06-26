@@ -29,6 +29,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jwt_sessions', '~> 2.3'
 gem 'rack-cors'
 
+# This add Rubocop to Project, if generates issues move to development
+gem 'rubocop-rails', require: false
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %I[mri mingw x64_mingw]
