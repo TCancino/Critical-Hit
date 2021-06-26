@@ -1,4 +1,6 @@
-# frozen_string_literal: true
-
-class AddressesController < ApplicationController
+module Api
+  module V1
+    class AddressesController < ApplicationController
+    end
+  end
 end
