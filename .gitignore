@@ -3,3 +3,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+db/schema.rb
+
+db/development.sqlite3
