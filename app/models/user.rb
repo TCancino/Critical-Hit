@@ -7,6 +7,6 @@ class User < ApplicationRecord
   field :email, type: String
 
   has_secure_password
-  has_many :records #delete
+  has_many :records # delete
   has_many :purchase_orders, :addresses, :subscriptions, :ratings
 end

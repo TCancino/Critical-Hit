@@ -10,81 +10,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_213218) do
-
-  create_table "addresses", force: :cascade do |t|
-    t.string "country"
-    t.string "city"
-    t.string "street"
-    t.string "postal_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_210_615_213_218) do
+  create_table 'addresses', force: :cascade do |t|
+    t.string 'country'
+    t.string 'city'
+    t.string 'street'
+    t.string 'postal_code'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "artists", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_artists_on_user_id"
+  create_table 'artists', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_artists_on_user_id'
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'categories', force: :cascade do |t|
+    t.string 'name'
+    t.text 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "discounts", force: :cascade do |t|
-    t.integer "amount"
-    t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'discounts', force: :cascade do |t|
+    t.integer 'amount'
+    t.string 'type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.integer "price"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'products', force: :cascade do |t|
+    t.integer 'price'
+    t.text 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "purchase_orders", force: :cascade do |t|
-    t.integer "amount"
-    t.string "payment_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'purchase_orders', force: :cascade do |t|
+    t.integer 'amount'
+    t.string 'payment_type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "records", force: :cascade do |t|
-    t.string "title"
-    t.string "year"
-    t.integer "artist_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_records_on_artist_id"
-    t.index ["user_id"], name: "index_records_on_user_id"
+  create_table 'records', force: :cascade do |t|
+    t.string 'title'
+    t.string 'year'
+    t.integer 'artist_id'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['artist_id'], name: 'index_records_on_artist_id'
+    t.index ['user_id'], name: 'index_records_on_user_id'
   end
 
-  create_table "subscriptions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'subscriptions', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', null: false
+    t.string 'password_digest', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "valuations", force: :cascade do |t|
-    t.integer "score"
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'valuations', force: :cascade do |t|
+    t.integer 'score'
+    t.text 'comment'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
