@@ -6,7 +6,7 @@ import Records from '@/components/records/Records.vue'
 import Artists from '@/components/artists/Artists.vue'
 import LandingPage from '@/components/home/LandingPage.vue'
 import Catalog from '@/components/catalog/Catalog.vue'
-import Inventory from '@/components/inventory/Products.vue'
+import CreateProduct from '@/components/inventory/CreateProduct.vue'
 
 Vue.use(Router)
 
@@ -44,9 +44,9 @@ export default new Router({
       component: Catalog
     },
     {
-      path: '/inventario',
-      name: 'Inventory',
-      component: Inventory
+      path: '/create_product',
+      name: 'Create Product',
+      component: CreateProduct
     }
   ]
 })
