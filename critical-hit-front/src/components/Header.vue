@@ -13,17 +13,30 @@
         <router-link to="/signup" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign Up</router-link>
         <router-link to="/records" class="link-grey px-2 no-underline" v-if="signedIn()">Records</router-link>
         <router-link to="/artists" class="link-grey px-2 no-underline" v-if="signedIn()">Artists</router-link>
+        <router-link to="/edit_form" class="link-grey px-2 no-underline" v-if="signedIn()">Edit Form</router-link>
         <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Sign out</a>
+      </div>
+      <div id="app" class="container">
+        <div class="text-right"><button class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Cart ({{cartItems.length}})</button></div>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import cartModal from '@/components/shoppingCart/Cart.vue'
 export default {
   name: 'Header',
   created () {
     this.signedIn()
+  },
+  data() {
+    return {
+      cartItems: []
+    }
+  },
+  modules: {
+    cartModal
   },
   methods: {
     setError (error, text) {

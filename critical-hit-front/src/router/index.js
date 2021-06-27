@@ -6,7 +6,9 @@ import Records from '@/components/records/Records.vue'
 import Artists from '@/components/artists/Artists.vue'
 import LandingPage from '@/components/home/LandingPage.vue'
 import Catalog from '@/components/catalog/Catalog.vue'
+import Product from '@/components/catalog/Product.vue'
 import CreateProduct from '@/components/inventory/CreateProduct.vue'
+import EditForm from '@/components/controlPanel/EditForm.vue'
 
 Vue.use(Router)
 
@@ -47,6 +49,16 @@ export default new Router({
       path: '/create_product',
       name: 'Create Product',
       component: CreateProduct
+    },
+    {
+      path: '/product/:id',
+      name: 'Product',
+      component: Product
+    },
+    {
+      path: '/edit_form',
+      name: 'Edit Form',
+      component: EditForm
     }
   ]
 })

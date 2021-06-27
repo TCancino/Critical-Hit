@@ -6,6 +6,18 @@ module Api
       #GET /products
       def index
           @products = Product.all
+            #GET /products
+            def index
+                @products = Product.all
+            
+                render json: @products
+            end
+        
+            # GET /products/1
+            def show
+                @product = Product.find(params[:id])
+                render json: { data: @product, status: 'ok', message: 'success' }
+            end
 
           render json: @products
       end
