@@ -14,6 +14,7 @@ module Api
   
         # GET /artists/1
         def show
+          @user = User.find(params[:id])
           render json: @user
         end
   
