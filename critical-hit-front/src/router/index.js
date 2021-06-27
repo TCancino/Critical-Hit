@@ -9,6 +9,7 @@ import Catalog from '@/components/catalog/Catalog.vue'
 import Product from '@/components/catalog/Product.vue'
 import CreateProduct from '@/components/inventory/CreateProduct.vue'
 import EditForm from '@/components/controlPanel/EditForm.vue'
+import Addresses from '@/components/controlPanel/Addresses.vue'
 
 Vue.use(Router)
 
@@ -60,6 +61,11 @@ export default new Router({
       path: '/edit_form',
       name: 'Edit Form',
       component: EditForm
+    },
+    {
+      path: '/addresses',
+      name: 'Addresses',
+      component: Addresses
     }
   ]
 })

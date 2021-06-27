@@ -13,6 +13,7 @@
         <router-link to="/records" class="link-grey px-2 no-underline" v-if="signedIn()">Records</router-link>
         <router-link to="/artists" class="link-grey px-2 no-underline" v-if="signedIn()">Artists</router-link>
         <router-link to="/edit_form" class="link-grey px-2 no-underline" v-if="signedIn()">Edit Form</router-link>
+        <router-link to="/addresses" class="link-grey px-2 no-underline" v-if="signedIn()">My Adresses</router-link>
         <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Sign out</a>
       </div>
       <div id="app" class="container">
