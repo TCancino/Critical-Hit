@@ -19,7 +19,7 @@
           <input type="text" v-model="user.last_name" class="input" id="last_name">
         </div>
         <div class="mb-6">
-          {{user.rut}}
+          Rut: {{user.rut}}
         </div>
         <div class="mb-6">
           <input type="password" v-model="user.password" class="input" id="password" placeholder="nueva contraseña">
