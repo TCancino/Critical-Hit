@@ -12,7 +12,7 @@ module Api
           render json: @users
         end
   
-        # GET /artists/1
+        # GET /user/1
         def show
           @user = User.find(params[:id])
           render json: @user
@@ -52,7 +52,7 @@ module Api
   
         # Only allow a trusted parameter "white list" through.
         def user_params
-          params.require(:user).permit(:email, :password, :password_confirmation)
+          params.require(:user).permit(:email, :password, :password_confirmation, :username, :rut, :first_name, :middle_name, :last_name)
         end
       end
     end

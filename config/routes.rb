@@ -6,8 +6,7 @@ Rails.application.routes.draw do
       resources :records
       resources :artists
       resources :products
-      get 'app', to: 'products#index'
-      get 'app', to: 'users#index'
+      resources :users
     end
   end
 
