@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :artists
       resources :products
       resources :users
+      resources :ratings
     end
   end
 

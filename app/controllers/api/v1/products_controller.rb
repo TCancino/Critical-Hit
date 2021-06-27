@@ -5,26 +5,14 @@ module Api
 
       #GET /products
       def index
-          @products = Product.all
-            #GET /products
-            def index
-                @products = Product.all
-            
-                render json: @products
-            end
-        
-            # GET /products/1
-            def show
-                @product = Product.find(params[:id])
-                render json: { data: @product, status: 'ok', message: 'success' }
-            end
-
-          render json: @products
+        @products = Product.all
+        render json: @products
       end
-
       # GET /products/1
       def show
-          render json: @product
+        @product = Product.find(params[:id])
+        @ratings = Rating.where(product_id: params[:id])
+        render json: { product: @product, ratings: @ratings, status: 'ok', message: 'success' }
       end
 
       #POST /products
@@ -34,7 +22,7 @@ module Api
               render json: @product.errors, status: :unprocessable_entity
           end
       end
-
+      
       private
 
       def product_params

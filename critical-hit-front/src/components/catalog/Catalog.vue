@@ -9,10 +9,10 @@
       <div class="row">
         <div class="col-md-4" v-for="product in products" :key="product.id" :product="product">
           <div class="card mb-4" style="box-shadow: 5px 5px 5px 5px #da7b7b;">
-            <img class="text-center" src="https://criticalhit.cl/wp-content/uploads/2021/06/Age-of-War-300x300.jpg" alt="Denim Jeans" style="width:100%">
+            <img @click.prevent="detailProduct(product.id)" class="text-center" src="https://criticalhit.cl/wp-content/uploads/2021/06/Age-of-War-300x300.jpg" alt="Denim Jeans" style="width:100%">
             <h1 class="block flex-1 font-mono font-semibold flex items-center container ">
               <svg class="fill-current w-6 h-6 mr-2" viewBox="0 0 20 20" width="20" height="20"><title>Nombre del producto</title></svg>
-                <a style="color:black;" > {{ product.name }} </a>
+                <a v-on:click="detailProduct(product.id)" style="color:black;" > {{ product.name }} </a>
             </h1>
 
             <p class="block flex-1 font-mono font-semibold flex items-center ">
@@ -80,6 +80,11 @@ export default {
       formatPrice(value) {
       let val = (value/1).toFixed(0).replace('.', ',')
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    },
+    detailProduct(product){
+      this.$router.push({
+        path: `/product/${product}`
+      })
     }
   },
   components: {
