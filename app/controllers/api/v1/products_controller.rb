@@ -12,7 +12,8 @@ module Api
         
             # GET /products/1
             def show
-                render json: @product
+                @product = Product.find(params[:id])
+                render json: { data: @product, status: 'ok', message: 'success' }
             end
 
             #POST /products
