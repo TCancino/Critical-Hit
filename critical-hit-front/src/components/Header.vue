@@ -9,7 +9,7 @@
       <div>
         <router-link to="/catalogo" class="link-grey px-2 no-underline">Catálogo</router-link>
         <router-link to="/inventario" class="link-grey px-2 no-underline">Inventario</router-link>
-         <router-link to="/" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
+        <router-link to="/" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
         <router-link to="/signup" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign Up</router-link>
         <router-link to="/records" class="link-grey px-2 no-underline" v-if="signedIn()">Records</router-link>
         <router-link to="/artists" class="link-grey px-2 no-underline" v-if="signedIn()">Artists</router-link>
