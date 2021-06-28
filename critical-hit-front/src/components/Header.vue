@@ -15,6 +15,7 @@
         <router-link to="/edit_form" class="link-grey px-2 no-underline" v-if="signedIn()">Edit Form</router-link>
         <router-link to="/addresses" class="link-grey px-2 no-underline" v-if="signedIn()">My Adresses</router-link>
         <router-link to="/subscriptions" class="link-grey px-2 no-underline" v-if="signedIn()">Wishlist</router-link>
+        <router-link to="/purchase_orders" class="link-grey px-2 no-underline" v-if="signedIn()">My Orders</router-link>
         <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Sign out</a>
       </div>
       <div id="app" class="container">
@@ -31,7 +32,7 @@ export default {
   created () {
     this.signedIn()
   },
-  data() {
+  data () {
     return {
       cartItems: []
     }

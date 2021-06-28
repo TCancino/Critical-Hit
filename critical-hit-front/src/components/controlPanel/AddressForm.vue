@@ -58,10 +58,10 @@ export default {
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },
-    checkedSignedIn(){
+    checkedSignedIn () {
       return localStorage.signedIn
     },
-    createAddress(){
+    createAddress (){
       this.$http.secured.post('/api/v1/addresses',
       {
         name: this.address.name,

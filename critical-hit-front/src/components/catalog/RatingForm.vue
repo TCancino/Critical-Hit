@@ -19,7 +19,7 @@ export default {
     }
   },
   methods: {
-    rateProduct() {
+    rateProduct () {
       const rating = {value: this.value, comment: this.comment}
       if(rating.value >= 0 && rating.value <= 5 && rating.comment.length > 0){
         this.$http.secured.post('/api/v1/ratings',

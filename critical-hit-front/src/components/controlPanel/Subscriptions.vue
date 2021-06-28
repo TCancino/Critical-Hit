@@ -10,11 +10,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="product in products" v-bind:key="product.id">
-                    <td>{{product.name}}</td>
-                    <td>{{product.status}}</td>
+                <tr v-for="sub in subscriptions" v-bind:key="sub.id">
+                    <td>{{sub.product.name}}</td>
+                    <td>{{sub.product.status}}</td>
                     <td>
-                      <button>
+                      <button @click="destroySub(sub.subscription_id)">
                         <font-awesome-icon icon="trash" />
                       </button>
                     </td>
@@ -28,17 +28,30 @@
 export default {
     data() {
         return {
-            products: []
+            subscriptions: []
         };
     },
     created () {
     if (!localStorage.signedIn) {
       this.$router.replace('/')
     } else {
-      this.$http.secured.get('/api/v1/user/1/subscriptions')
+      this.$http.secured.get('/api/v1/subscriptions')
         .then(response => { this.subscriptions = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
     }
+  },
+  methods: {
+    destroySub(sub) {
+      console.log(sub)
+      this.$http.secured.delete(`/api/v1/subscriptions/${sub}`)
+      .then(response => {
+        this.subscriptions.splice(this.subscriptions.indexOf(sub),1)
+      })
+      .catch(error => this.setError(error, 'Cannot delete subscription'))
+    },
+    setError (error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
   },
 };
 </script>

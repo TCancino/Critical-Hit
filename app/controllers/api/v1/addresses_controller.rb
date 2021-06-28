@@ -1,26 +1,21 @@
 module Api
   module V1
     class AddressesController < ApplicationController
+      before_action :authorize_access_request!
       #GET /addresses
       def index
-        @addresses = Address.all
-
-        render json: @addresses
-      end
-      #GET /user/id/addresses
-      def addresses_by_id
-        @addresses = Address.where(user_id: params[:user_id])
+        @addresses = current_user.addresses.all
 
         render json: @addresses
       end
       #GET /address/:id
       def show
-        @address = Address.find(params[:id])
+        @address = current_user.addresses.find(params[:id])
         render json: { data: @address, status: 'ok', message: 'success' }
       end
       #POST /addresses
       def create
-        @address = Address.new(address_params)
+        @address = current_user.addresses.build(address_params)
         if @address.save
           render json: @address, status: 'created'
         else
@@ -42,7 +37,7 @@ module Api
 
       private
       def set_address
-        @address = Address.find(params[:id])
+        @address = current_user.addresses.find(params[:id])
       end
       def address_params
         params.require(:address).permit(:name, :address1, :address2, :state, :city, :region, :country, :user_id)

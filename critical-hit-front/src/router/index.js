@@ -12,6 +12,8 @@ import EditForm from '@/components/controlPanel/EditForm.vue'
 import Addresses from '@/components/controlPanel/Addresses.vue'
 import AddressForm from '@/components/controlPanel/AddressForm.vue'
 import Subscriptions from '@/components/controlPanel/Subscriptions.vue'
+import PurchaseOrders from '@/components/controlPanel/PurchaseOrders.vue'
+import Inventory from '@/components/inventory/Inventory.vue'
 
 Vue.use(Router)
 
@@ -49,6 +51,11 @@ export default new Router({
       component: Catalog
     },
     {
+      path: '/inventario',
+      name: 'Inventario',
+      component: Inventory
+    },
+    {
       path: '/create_product',
       name: 'Create Product',
       component: CreateProduct
@@ -78,6 +85,11 @@ export default new Router({
       path: '/subscriptions',
       name: 'Subscriptions',
       component: Subscriptions
+    },
+    {
+      path: '/purchase_orders',
+      name: 'Purchase Orders',
+      component: PurchaseOrders
     }
   ]
 })
