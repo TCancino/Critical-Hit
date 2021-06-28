@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="vertical-menu col-md-3">
-      <a class="active">Panel de  {{user.username.toUpperCase()}}</a>
+      <a class="active">{{user.username.toUpperCase()}} <font-awesome-icon icon="dice-d20" /></a>
       <a href="#" @click="option='addresses'">Dirección </a>
       <a href="#" @click="option='edit_form'">Mis datos</a>
       <a href="#" @click="option='subscription'">Mis subscripciones</a>
@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      option: null,
+      option: 'edit_form',
       user: {
       username: "thomas"}
     }
