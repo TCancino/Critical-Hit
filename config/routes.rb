@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :ratings
       resources :addresses
       resources :subscriptions
+      resources :purchase_orders
       get 'user/:user_id/subscriptions', controller: :subscriptions, action: :user_subscriptions
       post '/subscribe/:product_id', controller: :subscriptions, action: :create
     end

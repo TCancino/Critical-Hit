@@ -41,10 +41,15 @@ export default {
     if (!localStorage.signedIn) {
       this.$router.replace('/')
     } else {
-      this.$http.secured.get('/api/v1/user/1/purchase_orders')
+      this.$http.secured.get('/api/v1/purchase_orders')
         .then(response => { this.addresses = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
     }
+  },
+  methods: {
+    setError (error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
   },
 };
 </script>

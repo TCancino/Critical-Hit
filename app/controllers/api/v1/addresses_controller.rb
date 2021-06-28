@@ -10,12 +10,12 @@ module Api
       end
       #GET /address/:id
       def show
-        @address = Address.find(params[:id])
+        @address = current_user.addresses.find(params[:id])
         render json: { data: @address, status: 'ok', message: 'success' }
       end
       #POST /addresses
       def create
-        @address = Address.new(address_params)
+        @address = current_user.addresses.build(address_params)
         if @address.save
           render json: @address, status: 'created'
         else
@@ -37,7 +37,7 @@ module Api
 
       private
       def set_address
-        @address = Address.find(params[:id])
+        @address = current_user.addresses.find(params[:id])
       end
       def address_params
         params.require(:address).permit(:name, :address1, :address2, :state, :city, :region, :country, :user_id)
