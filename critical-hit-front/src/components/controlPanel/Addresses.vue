@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <h3 class="p-3 text-center">Mis Direcciones</h3>
-        <table class="table table-striped table-bordered">
+        <div v-show="addresses.length ===0" class="text-center">
+          Aún no tienes ninguna dirección creada
+        </div>
+        <table v-show="addresses.length > 0" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Nombre</th>
