@@ -5,13 +5,28 @@ module Api
       # GET /purchase_orders
       def index
         @purchase_orders = current_user.purchase_orders.all
+        @orders = []
+        if @purchase_orders.length > 0 
+          @purchase_orders.each do |order|
+            order = {
+              number: @purchase_order.number,
+              products: @purchase_order.products,
+              amount: @purchase_order.ammount,
+              payment_type: @purchase_order.payment_type,
+              status: @purchase_order.status,
+              date: @purchase_order.date
+            }
+            @orders << order
+          end
+        end
 
-        render json: @purchase_orders
+        render json: @orders
       end
 
       # GET /purchase_order/:id
       def show
         @purchase_order = current_user.purchase_orders.find(params[:id])
+    
         render json: { data: @purchase_order, status: 'ok', message: 'success' }
       end
 
