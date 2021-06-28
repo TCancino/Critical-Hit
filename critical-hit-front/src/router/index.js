@@ -12,6 +12,7 @@ import EditForm from '@/components/controlPanel/EditForm.vue'
 import Addresses from '@/components/controlPanel/Addresses.vue'
 import AddressForm from '@/components/controlPanel/AddressForm.vue'
 import Subscriptions from '@/components/controlPanel/Subscriptions.vue'
+import PurchaseOrders from '@/components/controlPanel/PurchaseOrders.vue'
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ export default new Router({
       path: '/subscriptions',
       name: 'Subscriptions',
       component: Subscriptions
+    },
+    {
+      path: '/purchase_orders',
+      name: 'Purchase Orders',
+      component: PurchaseOrders
     }
   ]
 })
