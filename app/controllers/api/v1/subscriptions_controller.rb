@@ -4,11 +4,10 @@ module Api
       before_action :authorize_access_request!
 
       # POST /subscription/:user_id/:product_id
-      def subscribe
-        @user = User.find_by(id: params[:user_id])
+      def create
         @product = Product.find_by(id: params[:product_id])
-        if @user && @product
-          @subscription = Subscription.create(user_id: @user.id, product_id: @product_id.id)
+        if current_user && @product
+          @subscription = current_user.subscriptions.build(product_id: params[:product_id])
           if @subscription.save
             render json: @subscription, status: :created
           else
@@ -17,9 +16,9 @@ module Api
         end
       end
 
-      #GET /user/:user_id/subscriptions
-      def user_subscriptions
-        @subscriptions = Subscription.where(user_id: params[:user_id])
+      #GET /subscriptions
+      def index
+        @subscriptions = current_user.subscriptions.all
         @subscriptions_lists = []
         @subscriptions.each do |sub|
           product = Product.find_by(id: sub["product_id"])
@@ -33,6 +32,9 @@ module Api
         @subscription = Subscription.find_by(id: params[:id])
         @subscription.destroy
       end
+
+      private
+
     end
   end
 end

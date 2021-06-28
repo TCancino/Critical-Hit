@@ -35,7 +35,7 @@ export default {
     if (!localStorage.signedIn) {
       this.$router.replace('/')
     } else {
-      this.$http.secured.get('/api/v1/user/1/subscriptions')
+      this.$http.secured.get('/api/v1/subscriptions')
         .then(response => { this.subscriptions = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
     }

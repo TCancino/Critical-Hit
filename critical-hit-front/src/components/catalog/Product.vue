@@ -2,7 +2,7 @@
   <div class="card text-center">
     <div class="text-red" v-if="error">{{ error }}</div>
     <div>
-      <button type="button" class="btn btn-danger float-right mr-6 mt-3 " >
+      <button @click="subscribe" type="button" class="btn btn-danger float-right mr-6 mt-3 " >
         Agregar a favoritos <font-awesome-icon icon="heart" />
       </button>
     </div>
@@ -111,6 +111,15 @@ export default {
     formatPrice(value) {
       let val = (value/1).toFixed(0).replace('.', ',')
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    },
+    subscribe() {
+      if (this.signedIn()){
+        this.$http.secured.post(`/api/v1/subscribe/${this.$route.params.id}`)
+          .catch(error => this.setError(error, 'Something went wrong'))
+      }
+    },
+    signedIn () {
+      return localStorage.signedIn
     }
   },
   components: {

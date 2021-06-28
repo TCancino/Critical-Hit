@@ -1,15 +1,10 @@
 module Api
   module V1
     class AddressesController < ApplicationController
+      before_action :authorize_access_request!
       #GET /addresses
       def index
-        @addresses = Address.all
-
-        render json: @addresses
-      end
-      #GET /user/id/addresses
-      def addresses_by_id
-        @addresses = Address.where(user_id: params[:user_id])
+        @addresses = current_user.addresses.all
 
         render json: @addresses
       end
