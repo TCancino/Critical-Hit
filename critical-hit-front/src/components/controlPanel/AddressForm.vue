@@ -4,24 +4,31 @@
       <h3 class="text-2xl mb-6 text-grey-darkest">Nueva dirección</h3>
       <form @submit.prevent="createAddress">
         <div class="mb-6">
+          <label for="text" class="label">Nombre De Dirección</label>
           <input type="text" v-model="address.name" class="input" id="name" placeholder="Mi casa"/>
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Dirección</label>
           <input type="text" v-model="address.address1" class="input" id="address1" placeholder="Alcantarilla sur 3">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Casa/Dpto</label>
           <input type="text" v-model="address.address2" class="input" id="address2" placeholder="Departamento 123">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Comuna</label>
           <input type="text" v-model="address.state" class="input" id="state" placeholder="La florinda">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Ciudad</label>
           <input type="text" v-model="address.city" class="input" id="city" placeholder="Talca">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Región</label>
           <input type="text" v-model="address.region" class="input" id="region" placeholder="Borde galactico">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Código Postal</label>
           <input type="text" v-model="address.postal_code" class="input" id="postal_code" placeholder="1111111">
         </div>
         <div>

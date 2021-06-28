@@ -5,11 +5,11 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Direccion</th>
+                    <th>Dirección</th>
                     <th>Casa/Dpto</th>
                     <th>Comuna</th>
                     <th>Ciudad</th>
-                    <th>Region</th>
+                    <th>Región</th>
                     <th>Editar</th>
                     <th>Borrar</th>
                 </tr>

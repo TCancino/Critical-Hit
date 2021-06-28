@@ -4,27 +4,34 @@
       <h3 class="text-2xl mb-6 text-grey-darkest">Perfil</h3>
       <form>
         <div class="mb-6">
+          <label for="username" class="label">Nombre de Usuario</label>
           <input type="username" v-model="user.username" class="input" id="username"/>
         </div>
         <div class="mb-6">
+          <label for="email" class="label">Correo electrónico</label>
           <input type="email" v-model="user.email" class="input" id="email">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Nombre</label>
           <input type="text" v-model="user.first_name" class="input" id="first_name">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Segundo Nombre</label>
           <input type="text" v-model="user.middle_name" class="input" id="middle_name">
         </div>
         <div class="mb-6">
+          <label for="text" class="label">Apellidos</label>
           <input type="text" v-model="user.last_name" class="input" id="last_name">
         </div>
         <div class="mb-6">
           Rut: {{user.rut}}
         </div>
         <div class="mb-6">
+          <label for="password" class="label">Cambiar Contraseña</label>
           <input type="password" v-model="user.password" class="input" id="password" placeholder="nueva contraseña">
         </div>
         <div class="mb-6">
+          <label for="password" class="label">Repetir Contraseña</label>
           <input type="password" v-model="user.password_confirmation" class="input" id="password_confirmation" placeholder="repetir contraseña">
         </div>
         <div>
