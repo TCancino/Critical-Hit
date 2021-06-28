@@ -36,7 +36,7 @@
             </tbody>
         </table>
       <div class="text-right">
-        <button class="btn btn-primary" >Agregar Direccion</button>
+        <button @click="$router.push({path: '/addresses/new'})" class="btn btn-primary" >Agregar Direccion</button>
       </div>
     </div>
 </template>
@@ -45,14 +45,17 @@
 export default {
     data() {
         return {
-            addresses: [
-                { name: 'Mi Casa', address1: 'los solcitos 117', address2: 'condominio 1, casa 5', state: 'Las Condes', city: 'Santiago', region: 'RM' },
-                { name: 'Trabajo', address1: 'Washinton Carrasco 21', address2: 'oficina 203', state: 'Providencia', city: 'Santiago', region: 'RM' },
-                { name: 'Depa Waifu', address1: 'Frank Pueblano 0982', address2: 'torre 2, 1301', state: 'Vitacura',  city: 'Santiago', region: 'RM' },
-                { name: 'Casa de mis viejos', address1: 'Mar Rojo 9032', address2: '', state: 'Cerro Los Placeres', city: 'Valparaiso', region: 'Valparaiso' },
-                { name: 'Dpto Peter', address1: 'Abedules Rancios 10', address2: 'torre 1, 344', state: 'San Bernardo', city: 'San Bernardo', region: 'RM' }
-            ]
+            addresses: []
         };
+    },
+    created () {
+    if (!localStorage.signedIn) {
+      this.$router.replace('/')
+    } else {
+      this.$http.secured.get('/api/v1/user/1/addresses')
+        .then(response => { this.addresses = response.data })
+        .catch(error => this.setError(error, 'Something went wrong'))
     }
+  },
 };
 </script>

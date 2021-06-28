@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       resources :products
       resources :users
       resources :ratings
+      resources :addresses
+      get 'user/:user_id/addresses', controller: :addresses, action: :addresses_by_id
     end
   end
 

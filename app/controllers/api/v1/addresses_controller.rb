@@ -7,6 +7,12 @@ module Api
 
         render json: @addresses
       end
+      #GET /user/id/addresses
+      def addresses_by_id
+        @addresses = Address.where(user_id: params[:user_id])
+
+        render json: @addresses
+      end
       #GET /address/:id
       def show
         @address = Address.find(params[:id])
@@ -16,7 +22,7 @@ module Api
       def create
         @address = Address.new(address_params)
         if @address.save
-          render json: @address, status: created
+          render json: @address, status: 'created'
         else
           render json: @address.errors, status: :unprocessable_entity
         end
@@ -39,7 +45,7 @@ module Api
         @address = Address.find(params[:id])
       end
       def address_params
-        params.require(:address).permit(:name, :address1, :address2, :state, :city, :region, :country)
+        params.require(:address).permit(:name, :address1, :address2, :state, :city, :region, :country, :user_id)
       end
     end
   end
