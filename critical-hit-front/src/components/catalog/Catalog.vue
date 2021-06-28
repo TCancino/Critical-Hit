@@ -22,13 +22,13 @@
 
             <p class="card-body price">
               <svg class="fill-current w-6 h-6 mr-2" viewBox="0 0 20 20" width="20" height="20"><title>Nombre del producto</title></svg>
-              <a style="color:black;"> ${{formatPrice(product.price) }} </a>
+              <a style="color:black;"> ${{ formatPrice(product.price) }} </a>
             </p>
 
             <div style="padding-left: 30px; padding-bottom: 30px;">
               <star-rating :star-size="20"></star-rating>
             </div>
-            <button @click="addToCart(item)" class="btn btn-sm btn-danger">Añadir al carrito</button>
+            <button @click="addToCart(item)" class="btn btn-sm btn-danger">Añadir al carrito <font-awesome-icon icon="shopping-cart" /></button>
           </div>
         </div>
     </div>
@@ -77,7 +77,7 @@ export default {
 
 			itemToAdd.qty = 1;
     },
-      formatPrice(value) {
+    formatPrice(value) {
       let val = (value/1).toFixed(0).replace('.', ',')
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
     },
