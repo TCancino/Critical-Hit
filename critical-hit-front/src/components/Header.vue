@@ -14,10 +14,11 @@
         <router-link to="/artists" class="link-grey px-2 no-underline" v-if="signedIn()">Artists</router-link>
         <router-link to="/edit_form" class="link-grey px-2 no-underline" v-if="signedIn()">Edit Form</router-link>
         <router-link to="/addresses" class="link-grey px-2 no-underline" v-if="signedIn()">My Adresses</router-link>
+        <router-link to="/subscriptions" class="link-grey px-2 no-underline" v-if="signedIn()">Wishlist</router-link>
         <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Sign out</a>
       </div>
       <div id="app" class="container">
-        <div class="text-right"><button class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Cart ({{cartItems.length}})</button></div>
+        <div class="text-right"><button class="btn btn-primary" data-toggle="modal" data-target="#cartModal"><font-awesome-icon icon="shopping-cart" />({{cartItems.length}})</button></div>
       </div>
     </div>
   </header>
