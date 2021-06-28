@@ -14,6 +14,7 @@ import AddressForm from '@/components/controlPanel/AddressForm.vue'
 import Subscriptions from '@/components/controlPanel/Subscriptions.vue'
 import PurchaseOrders from '@/components/controlPanel/PurchaseOrders.vue'
 import Inventory from '@/components/inventory/Inventory.vue'
+import ControlPanel from '@/components/controlPanel/ControlPanel.vue'
 
 Vue.use(Router)
 
@@ -90,6 +91,11 @@ export default new Router({
       path: '/purchase_orders',
       name: 'Purchase Orders',
       component: PurchaseOrders
+    },
+    {
+      path: '/control_panel',
+      name: 'Control panel',
+      component: ControlPanel
     }
   ]
 })
