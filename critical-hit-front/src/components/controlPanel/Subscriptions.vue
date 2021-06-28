@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <h3 class="p-3 text-center">Mi Lista de Deseados</h3>
-        <table class="table table-striped table-bordered">
+        <div v-show="subscriptions.length === 0" class="text-center">
+          Aún no tienes productos en tu lista de deseados
+        </div>
+        <table v-show="subscriptions.length > 0" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Nombre</th>
