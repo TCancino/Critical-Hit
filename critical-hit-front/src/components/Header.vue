@@ -31,7 +31,7 @@ export default {
   created () {
     this.signedIn()
   },
-  data() {
+  data () {
     return {
       cartItems: []
     }

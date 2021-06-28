@@ -52,10 +52,10 @@ export default {
     if (!localStorage.signedIn) {
       this.$router.replace('/')
     } else {
-      this.$http.secured.get('/api/v1/user/1/addresses')
+      this.$http.secured.get('/api/v1/addresses')
         .then(response => { this.addresses = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
     }
   },
-};
+}
 </script>
