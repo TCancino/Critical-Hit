@@ -18,7 +18,7 @@
         <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Sign out</a>
       </div>
       <div id="app" class="container">
-        <div class="text-right"><button class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Cart ({{cartItems.length}})</button></div>
+        <div class="text-right"><button class="btn btn-primary" data-toggle="modal" data-target="#cartModal"><font-awesome-icon icon="shopping-cart" />({{cartItems.length}})</button></div>
       </div>
     </div>
   </header>
