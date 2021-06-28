@@ -10,11 +10,11 @@ import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTrash, faEdit, faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faEdit, faShoppingCart, faHeart} from '@fortawesome/free-solid-svg-icons'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faTrash, faEdit, faShoppingCart)
+library.add(faTrash, faEdit, faShoppingCart, faHeart)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(BootstrapVue);
