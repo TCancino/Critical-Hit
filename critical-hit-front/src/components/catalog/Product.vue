@@ -34,7 +34,38 @@
       <b-card no-body>
         <b-tabs card>
           <b-tab title="Descripción" active><p> {{ product.description }} </p></b-tab>
-          <b-tab title="Especificaciones" active><p> {{ product.description }} </p></b-tab>
+          <b-tab title="Especificaciones" active>
+            <table style="width:50%" cellpadding="10px" cellspacing="1px" padding="20px" class="container">
+                <tr>
+                    <th>Marca</th>
+                    <td> {{ product.brand }} </td>
+                </tr>
+                <tr>
+                  <th>Alto</th>
+                  <td> {{ product.height }} </td>
+                </tr>
+                <tr>
+                  <th>Ancho</th>
+                  <td> {{ product.width }} </td>
+                </tr>
+                <tr>
+                  <th>Largo</th>
+                  <td> {{ product.length }} </td>
+                </tr>
+                <tr>
+                  <th>Peso</th>
+                  <td> {{ product.weight }} </td>
+                </tr>
+                <tr>
+                  <th>Edad recomendada</th>
+                  <td> {{ product.recommended_age }} </td>
+                </tr>
+                <tr>
+                  <th>Cantidad de jugadores</th>
+                  <td> {{ product.number_of_player }} </td>
+                </tr>
+            </table>
+          </b-tab>
           <b-tab title="Comentarios" ><p v-for="rating in ratings " :key="rating.id">Valor:{{rating.value}} Comentario: {{rating.comment}}</p></b-tab>
           <b-tab title="Términos y condiciónes" ><p>Los consumidores podrán devolver un producto adquirido en Mercado Critical Hit dentro del plazo de 10 días contados desde su recepción, sin necesidad de invocar ninguna causa y siempre y cuando el producto no se haya deteriorado por un hecho imputable al consumidor.</p></b-tab>
         </b-tabs>
@@ -110,3 +141,17 @@ export default {
   }
 }
 </script>
+
+<style >
+table, th, td {
+    border: 1px solid black;
+}
+table th, table td {
+  width: 50%;
+  text-align: left;
+
+}
+table th {
+  text-align: left;
+}
+</style>
