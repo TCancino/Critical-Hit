@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <h3 class="p-3 text-center">Ofertas</h3>
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered" style="layout: fixed;">
       <thead>
           <tr>
               <th>Nombre</th>
               <th>Monto</th>
-              <th>Nombre</th>
-              <th>Monto</th>
+              <th>Fecha de inicio</th>
+              <th>Fecha de término</th>
           </tr>
       </thead>
       <tbody>

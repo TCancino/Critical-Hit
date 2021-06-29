@@ -37,7 +37,7 @@
         <b-tabs card>
           <b-tab title="Descripción" active><p> {{ product.description }} </p></b-tab>
           <b-tab title="Especificaciones" active>
-            <table style="width:50%" cellpadding="10px" cellspacing="1px" padding="20px" class="container">
+            <table style="width:50%" cellpadding="10px" cellspacing="1px" padding="20px" class="table-striped container">
                 <tr>
                     <th>Marca</th>
                     <td> {{ product.brand }} </td>
