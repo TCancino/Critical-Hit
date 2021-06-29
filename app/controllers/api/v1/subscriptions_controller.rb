@@ -26,7 +26,7 @@ module Api
         end
         render json: @subscriptions_lists
       end
-      
+
       #DELETE /subscription/1
       def destroy
         @subscription = Subscription.find_by(id: params[:id])

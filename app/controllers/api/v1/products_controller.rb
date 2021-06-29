@@ -43,7 +43,8 @@ module Api
             :weight,
             :recommended_age,
             :number_of_player,
-            :offer_id)
+            :offer_id
+          )
       end
     end
   end

@@ -25,7 +25,7 @@
               <a style="color:black;"> ${{ formatPrice(product.price) }} </a>
             </p>
 
-            <div style="padding-left: 30px; padding-bottom: 30px;">
+            <div class="d-flex justify-content-center">
               <star-rating :star-size="20"></star-rating>
             </div>
             <button @click="addToCart(product,1)" class="btn btn-sm btn-danger">Añadir al carrito <font-awesome-icon icon="shopping-cart" /></button>

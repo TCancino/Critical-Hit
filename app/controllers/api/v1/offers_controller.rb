@@ -16,6 +16,7 @@ module Api
           render json: @offer, status: :updated
         else
           render json: @offer.errors, status: :unprocessable_entity
+        end
       end
 
       def create
@@ -24,12 +25,19 @@ module Api
           render json: @offer, success: true
         else
           render json: @offer.errors, status: :unprocessable_entity
+        end
       end
 
       private
 
       def offer_params
-        params.require(:offer).permit(:name, :start_date, :end_date, :type, :ammount, :)
+        params.require(:offer).permit(
+          :name,
+          :start_date,
+          :end_date,
+          :ammount,
+          :product_id
+        )
       end
     end
   end

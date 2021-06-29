@@ -13,7 +13,7 @@
       <p>
         <a style="color:grey;"> SKU:{{product.sku}} </a>
       </p>
-      <div style="padding-left: 790px; padding-bottom: 30px;">
+      <div class="d-flex justify-content-center">
         <star-rating :star-size="20"></star-rating>
       </div>
       <div>Precio: ${{ formatPrice(product.price) }}</div>

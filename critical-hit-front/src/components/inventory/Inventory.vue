@@ -46,7 +46,7 @@ export default {
   name: 'Inventory',
   data() {
       return {
-          products: []
+        products: []
       };
     },
   created () {
