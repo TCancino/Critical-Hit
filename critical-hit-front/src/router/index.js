@@ -17,6 +17,7 @@ import Inventory from '@/components/inventory/Inventory.vue'
 import ControlPanel from '@/components/controlPanel/ControlPanel.vue'
 import CartForm from '@/components/shoppingCart/CartForm.vue'
 import Category from '@/components/inventory/Category.vue'
+import CreateCategory from '@/components/inventory/CreateCategory.vue'
 
 Vue.use(Router)
 
@@ -109,6 +110,11 @@ export default new Router({
       path: '/categories',
       name: 'Category',
       component: Category
+    },
+    {
+      path: '/create_category',
+      name: 'Create Category',
+      component: CreateCategory
     }
   ]
 })
