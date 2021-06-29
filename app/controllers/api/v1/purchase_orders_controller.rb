@@ -33,6 +33,15 @@ module Api
       # POST /purchase_orders
       def create
         @purchase_order = current_user.purchase_orders.build()
+        if @purchase_order.save
+          @carts = current_user.carts.all
+          @carts.each do |cart|
+            @cart_detail = @purchase_order.purchase_order_detail.build(product_id: cart.product_id)
+            if @cart_detail.save
+              cart.destroy
+            end
+          end
+        end
       end
 
       private

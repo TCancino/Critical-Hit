@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :addresses
   has_many :subscriptions
   has_many :ratings
+  has_many :carts
 end

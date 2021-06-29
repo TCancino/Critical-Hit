@@ -6,26 +6,28 @@
         Agregar a favoritos <font-awesome-icon icon="heart" />
       </button>
     </div>
-    <h1>
-      <a style="color:black;"> {{product.name}} </a>
-    </h1>
-    <p>
-      <a style="color:grey;"> SKU:{{product.sku}} </a>
-    </p>
-    <div style="padding-left: 790px; padding-bottom: 30px;">
-      <star-rating :star-size="20"></star-rating>
-    </div>
-    <div>Precio: ${{ formatPrice(product.price) }}</div>
-    <div>Stock: {{product.stock}}</div>
-    <div v-if="product.status == 'Disponible'">
-      <input v-model="qty" class="form-control input-qty" type="number">
-      <button >Agregar al carro</button>
-    </div>
-    <div v-else-if="product.status == 'Preventa'">
-      <button>Reservar</button>
-    </div>
-    <div v-else style="color:red;">
-      No disponible
+    <div class="container">
+      <h1>
+        <a style="color:black;"> {{product.name}} </a>
+      </h1>
+      <p>
+        <a style="color:grey;"> SKU:{{product.sku}} </a>
+      </p>
+      <div style="padding-left: 790px; padding-bottom: 30px;">
+        <star-rating :star-size="20"></star-rating>
+      </div>
+      <div>Precio: ${{ formatPrice(product.price) }}</div>
+      <div>Stock: {{product.stock}}</div>
+      <div v-if="product.status == 'Disponible'">
+        <input v-model="qty" class="form-control input-qty" type="number">
+        <button >Agregar al carro</button>
+      </div>
+      <div v-else-if="product.status == 'Preventa'">
+        <button>Reservar</button>
+      </div>
+      <div v-else style="color:red;">
+        No disponible
+      </div>
     </div>
     <div v-on:click="showRatings">Comentarios ({{ratings.length}})</div>
     <Ratings v-if="isHidden" v-bind:ratings="ratings"/>

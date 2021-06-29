@@ -18,7 +18,7 @@
           <button class="btn btn-primary" data-toggle="modal" data-target="#cartModal">
             <font-awesome-icon icon="shopping-cart" />({{cartItems.length}})
           </button>
-          <router-link to="/cart_form" class="link-grey">Ir al Carrito</router-link>
+          <router-link to="/cart_form" v-bind:cartItems="cartItems" class="link-grey">Ir al Carrito</router-link>
         </div>
       </div>
     </div>

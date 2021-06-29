@@ -27,7 +27,7 @@ module Api
         if @address.update(address_params)
           render json: @address
         else
-          rebder @address.errors, status: :unprocessable_entity
+          render @address.errors, status: :unprocessable_entity
         end
       end
       #DELETE /address/:id
