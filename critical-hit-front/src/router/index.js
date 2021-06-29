@@ -16,6 +16,7 @@ import PurchaseOrders from '@/components/controlPanel/PurchaseOrders.vue'
 import Inventory from '@/components/inventory/Inventory.vue'
 import ControlPanel from '@/components/controlPanel/ControlPanel.vue'
 import CartForm from '@/components/shoppingCart/CartForm.vue'
+import Category from '@/components/inventory/Category.vue'
 
 Vue.use(Router)
 
@@ -103,6 +104,11 @@ export default new Router({
       path: '/cart_form',
       name: 'Cart Form',
       component: CartForm
+    },
+    {
+      path: '/categories',
+      name: 'Category',
+      component: Category
     }
   ]
 })

@@ -1,0 +1,52 @@
+<template>
+    <div class="container">
+        <h3 class="p-3 text-center">Categorías</h3>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="cat in categories" v-bind:key="cat.id">
+                    <td>{{cat.name}}</td>
+                    <td>{{cat.description}}</td>
+                    <td>
+                      <button>
+                        <font-awesome-icon icon="edit" />
+                      </button>
+                    </td>
+                    <td>
+                      <button>
+                        <font-awesome-icon icon="trash" />
+                      </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      <div class="text-right">
+        <button @click="$router.push({path: '/create_category'})" class="btn btn-primary" >Agregar Categoría</button>
+      </div>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'Categories',
+  data() {
+      return {
+          categories: []
+      };
+    },
+  created () {
+    if (!localStorage.signedIn) {
+      this.$router.replace('/')
+    } else {
+      this.$http.secured.get('/api/v1/categories')
+        .then(response => { this.products = response.data })
+        .catch(error => this.setError(error, 'Something went wrong'))
+    }
+  },
+}
+</script>
