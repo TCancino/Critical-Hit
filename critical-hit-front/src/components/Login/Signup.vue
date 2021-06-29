@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     signup () {
-      this.$http.plain.post('/signup', { 
+      this.$http.plain.post('/signup', {
           email: this.email,
           password: this.password,
           password_confirmation: this.password_confirmation,
@@ -91,7 +91,7 @@ export default {
       localStorage.csrf = response.data.csrf
       localStorage.signedIn = true
       this.error = ''
-      this.$router.replace('/records')
+      this.$router.replace('/catalogo')
     },
     signupFailed (error) {
       this.error = (error.response && error.response.data && error.response.data.error) || 'Something went wrong'
@@ -100,7 +100,7 @@ export default {
     },
     checkedSignedIn () {
       if (localStorage.signedIn) {
-        this.$router.replace('/records')
+        this.$router.replace('/catalogo')
       }
     }
   }
