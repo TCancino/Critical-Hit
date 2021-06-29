@@ -36,28 +36,42 @@
       <b-card no-body>
         <b-tabs card>
           <b-tab title="Descripción" active><p> {{ product.description }} </p></b-tab>
-          <b-tab title="Especificaciones" active><p> {{ product.description }} </p></b-tab>
+          <b-tab title="Especificaciones" active>
+            <table style="width:50%" cellpadding="10px" cellspacing="1px" padding="20px" class="container">
+                <tr>
+                    <th>Marca</th>
+                    <td> {{ product.brand }} </td>
+                </tr>
+                <tr>
+                  <th>Alto</th>
+                  <td> {{ product.height }} </td>
+                </tr>
+                <tr>
+                  <th>Ancho</th>
+                  <td> {{ product.width }} </td>
+                </tr>
+                <tr>
+                  <th>Largo</th>
+                  <td> {{ product.length }} </td>
+                </tr>
+                <tr>
+                  <th>Peso</th>
+                  <td> {{ product.weight }} </td>
+                </tr>
+                <tr>
+                  <th>Edad recomendada</th>
+                  <td> {{ product.recommended_age }} </td>
+                </tr>
+                <tr>
+                  <th>Cantidad de jugadores</th>
+                  <td> {{ product.number_of_player }} </td>
+                </tr>
+            </table>
+          </b-tab>
           <b-tab title="Comentarios" ><p v-for="rating in ratings " :key="rating.id">Valor:{{rating.value}} Comentario: {{rating.comment}}</p></b-tab>
           <b-tab title="Términos y condiciónes" ><p>Los consumidores podrán devolver un producto adquirido en Mercado Critical Hit dentro del plazo de 10 días contados desde su recepción, sin necesidad de invocar ninguna causa y siempre y cuando el producto no se haya deteriorado por un hecho imputable al consumidor.</p></b-tab>
         </b-tabs>
       </b-card>
-    </div>
-    <div>
-      <b-tabs content-class="mt-3">
-        <b-tab title="Descripción" active><p> {{ product.description }} </p></b-tab>
-        <b-tab title="Comentarios" active><p>
-          <Ratings v-bind:ratings="ratings"/>
-          <RatingForm></RatingForm>
-        </p></b-tab>
-        <b-tab title="Términos y condiciónes" >
-          <p>
-            Los consumidores podrán devolver un producto adquirido en Mercado Critical Hit dentro del plazo de 10 días contados desde su recepción, sin necesidad de invocar ninguna causa y siempre y cuando el producto no se haya deteriorado por un hecho imputable al consumidor.
-            Para ejercer este derecho, el consumidor deberá contactar directamente al respectivo proveedor que le hubiere realizado la venta del producto respecto del cual se quisiera ejercer el derecho de retracto, a efectos de coordinar con él la restitución del producto. Esta restitución podrá ser hecha por alguno 
-            de los siguientes mecanismos, a elección del consumidor: a) Entrega del producto en cualquiera de las oficinas de Chilexpress o b) Retiro del producto directamente desde el domicilio del consumidor. Cualquiera sea la modalidad elegida para la restitución del producto, al momento de hacerla efectiva el 
-            cliente deberá acompañar la boleta original o cualquier documento que acredite la compra y restituir en buen estado los elementos originales del embalaje, como las etiquetas, certificados de garantía, manuales de uso, cajas, elementos de protección y sus accesorios o pagar su valor respectivo, en caso que haya sido previamente informado. En caso de productos comprados en promoción, se requerirá la entrega de todos ellos, sin perjuicio que el cambio se efectúe sólo respecto a uno de ellos. Garantía legal. Las condiciones para cambios, devoluciones y servicio técnico de los productos que sean adquiridos por los consumidores respecto de un proveedor en la modalidad Mercado Ripley serán las que en cada caso sean informadas por los respectivos proveedores con ocasión de la oferta y/o comercialización de un producto determinado, las que en todo caso no podrán ser inferiores a aquellas establecidas en la Ley Nº 19.496, sobre Protección de los Derechos de los Consumidores.
-          </p>
-        </b-tab>
-      </b-tabs>
     </div>
   </div>
 </template>
@@ -129,3 +143,17 @@ export default {
   }
 }
 </script>
+
+<style >
+table, th, td {
+    border: 1px solid black;
+}
+table th, table td {
+  width: 50%;
+  text-align: left;
+
+}
+table th {
+  text-align: left;
+}
+</style>

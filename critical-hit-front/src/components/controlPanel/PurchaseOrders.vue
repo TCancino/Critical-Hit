@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <h3 class="p-3 text-center">Mis Pedidos</h3>
-        <table class="table table-striped table-bordered">
+        <div v-show="purchase_orders.length === 0" class="text-center">
+          Aún no tienes ningún pedido
+        </div>
+        <table v-show="purchase_orders.length > 0" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Nro De Orden</th>
