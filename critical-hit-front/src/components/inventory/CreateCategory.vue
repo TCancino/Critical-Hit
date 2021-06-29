@@ -15,7 +15,7 @@
           placeholder="Descripción"
           v-model="newCategory.description" />
       </div>
-      <input type="submit" value="Agregar Categoría" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
+      <input @click="$router.push({path: '/categories'})" v-on:click="addCategory" type="submit" value="Agregar Categoría" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
     </form>
     <hr class="border border-grey-light my-6" />
   </div>
@@ -43,9 +43,10 @@ export default {
         category: {
           name: this.newCategory.name,
           description: this.newCategory.description,
-        } 
+        }
         })
         .catch(error => this.setError(error, 'No se pudo crear la categoría'))
+        .then(alert('Dirección Creada'))
     },
   }
 }
