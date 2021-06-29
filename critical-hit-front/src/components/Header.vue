@@ -7,6 +7,7 @@
       </div>
       <div>
         <router-link to="/catalogo" class="link-grey px-2 no-underline">Catálogo</router-link>
+        <router-link to="/offers" class="link-grey px-2 no-underline">Ofertas</router-link>
         <router-link to="/inventario" class="link-grey px-2 no-underline">Inventario</router-link>
         <router-link to="/categories" class="link-grey px-2 no-underline">Categorías</router-link>
         <router-link to="/" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
