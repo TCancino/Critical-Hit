@@ -24,7 +24,7 @@
                     <td>{{product.stock}}</td>
                     <td>
                       <button>
-                        <font-awesome-icon icon="edit" />
+                        <font-awesome-icon @click="$router.push(`/product/${product.id}/edit`)" icon="edit" />
                       </button>
                     </td>
                     <td>
