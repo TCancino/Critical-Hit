@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :purchase_orders
       resources :carts
       resources :offers
+      resources :categories
       get 'user/:user_id/subscriptions', controller: :subscriptions, action: :user_subscriptions
       post '/subscribe/:product_id', controller: :subscriptions, action: :create
       post '/carts/:product_id/:quantity', controller: :carts, action: :create
