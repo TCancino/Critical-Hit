@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center" style="font-family: monospace">
+  <div class="text-center" style="font-family: monospace">
     <div class="card-body" v-if="error">
       {{ error }}
     </div>
@@ -7,7 +7,7 @@
 
       <hr>
       <div class="row">
-        <div class="col-md-4" v-for="product in products" :key="product.id" :product="product">
+        <div class="col-sm-3 " style="padding: 26px;" v-for="product in products" :key="product.id" :product="product">
           <div class="card mb-4" style="box-shadow: 5px 5px 5px 5px #da7b7b;">
             <img @click.prevent="detailProduct(product.id)" class="text-center" src="https://criticalhit.cl/wp-content/uploads/2021/06/Age-of-War-300x300.jpg" alt="Denim Jeans" style="width:100%">
             <h1 class="block flex-1 font-mono font-semibold flex items-center container ">
@@ -20,7 +20,7 @@
               <a style="color:black;"> {{product.description }} </a>
             </p>
 
-            <p class="card-body price">
+            <p class="card-body">
               <svg class="fill-current w-6 h-6 mr-2" viewBox="0 0 20 20" width="20" height="20"><title>Nombre del producto</title></svg>
               <a style="color:black;"> ${{ formatPrice(product.price) }} </a>
             </p>
