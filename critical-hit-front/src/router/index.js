@@ -19,6 +19,7 @@ import ControlPanel from '@/components/controlPanel/ControlPanel.vue'
 import CartForm from '@/components/shoppingCart/CartForm.vue'
 import Category from '@/components/inventory/Category.vue'
 import CreateCategory from '@/components/inventory/CreateCategory.vue'
+import Offers from '@/components/offers/Offers.vue'
 
 Vue.use(Router)
 
@@ -121,6 +122,11 @@ export default new Router({
       path: '/create_category',
       name: 'Create Category',
       component: CreateCategory
+    },
+    {
+      path: '/offers',
+      name: 'Offers',
+      component: Offers
     }
   ]
 })
