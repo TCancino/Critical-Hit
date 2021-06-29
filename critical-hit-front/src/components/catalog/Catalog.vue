@@ -28,7 +28,7 @@
             <div style="padding-left: 30px; padding-bottom: 30px;">
               <star-rating :star-size="20"></star-rating>
             </div>
-            <button @click="addToCart(item)" class="btn btn-sm btn-danger">Añadir al carrito <font-awesome-icon icon="shopping-cart" /></button>
+            <button @click="addToCart(product,1)" class="btn btn-sm btn-danger">Añadir al carrito <font-awesome-icon icon="shopping-cart" /></button>
           </div>
         </div>
     </div>
@@ -62,21 +62,6 @@ export default {
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },
-    addToCart () {
-      let found = false;
-
-      // Add the item or increase qty
-			let itemInCart = this.cartItems.filter(item => item.id===itemToAdd.id);
-			let isItemInCart = itemInCart.length > 0;
-
-      if (isItemInCart === false) {
-        this.cartItems.push(Vue.util.extend({}, itemToAdd));
-      } else {
-				itemInCart[0].qty += itemToAdd.qty;
-			}
-
-			itemToAdd.qty = 1;
-    },
     formatPrice(value) {
       let val = (value/1).toFixed(0).replace('.', ',')
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -85,6 +70,11 @@ export default {
       this.$router.push({
         path: `/product/${product}`
       })
+    },
+    addToCart(product, quantity) {
+      this.$http.secured.post(`/api/v1/carts/${product.id}/${quantity}`)
+        .then(response => { this.items = response.data })
+        .catch(error => this.setError(error, 'Something went wrong'))
     }
   },
   components: {

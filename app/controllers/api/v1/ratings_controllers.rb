@@ -13,7 +13,7 @@ module Api
       def create
           @rating = Rating.new(rating_params)
           if @rating.save
-            render json: success: true
+            render json: @rating, success: true
           else
             render json: @rating.errors, status: :unprocessable_entity
           end
