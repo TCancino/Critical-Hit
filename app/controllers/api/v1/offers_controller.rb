@@ -2,14 +2,20 @@ module Api
   module V1
     class OffersController < ApplicationController
       def index
+        @offers = Offer.all
+        render json: @offers
       end
 
       def show
-
+        @offer = Offer.find(offer_params)
+        render json: @offer
       end
 
       def update
-
+        if @offer.update(offer_params)
+          render json: @offer, status: :updated
+        else
+          render json: @offer.errors, status: :unprocessable_entity
       end
 
       def create
