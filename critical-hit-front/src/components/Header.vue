@@ -10,7 +10,7 @@
         <router-link to="/inventario" class="link-grey px-2 no-underline">Inventario</router-link>
         <router-link to="/" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
         <router-link to="/signup" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign Up</router-link>
-        <router-link to="/control_panel" class="link-grey px-2 no-underline" v-if="signedIn()">Mis Stats</router-link>
+        <router-link to="/control_panel" class="link-grey px-2 no-underline" v-bind:option="option" v-if="signedIn()">Mis Stats</router-link>
         <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Cerrar Sesión</a>
       </div>
       <div id="app" class="container">
@@ -34,7 +34,8 @@ export default {
   },
   data () {
     return {
-      cartItems: []
+      cartItems: [],
+      option: ''
     }
   },
   modules: {

@@ -45,6 +45,49 @@
           placeholder="Estado"
           v-model="newProduct.status" />
       </div>
+      <h3 class=" font-monomb-6 ml-6">Especificaciones del producto:</h3>
+        <div class="mb-6">
+          <input class="input"
+            autofocus autocomplete="off"
+            placeholder="Marca"
+            v-model="newProduct.brand" />
+        </div>
+        <div class="mb-6">
+          <input class="input"
+            autofocus autocomplete="off"
+            placeholder="Alto"
+            v-model="newProduct.height" />
+        </div>
+        <div class="mb-6">
+          <input class="input"
+            autofocus autocomplete="off"
+            placeholder="Ancho"
+            v-model="newProduct.width" />
+        </div>
+        <div class="mb-6">
+          <input class="input"
+            autofocus autocomplete="off"
+            placeholder="Largo"
+            v-model="newProduct.large" />
+        </div>
+        <div class="mb-6">
+          <input class="input"
+            autofocus autocomplete="off"
+            placeholder="Peso"
+            v-model="newProduct.weight" />
+        </div>
+        <div class="mb-6">
+          <input class="input"
+            autofocus autocomplete="off"
+            placeholder="Edad recomendada"
+            v-model="newProduct.recommended_age" />
+        </div>
+        <div class="mb-6">
+          <input class="input"
+            autofocus autocomplete="off"
+            placeholder="Cantidad de jugadores"
+            v-model="newProduct.number_of_player" />
+        </div>
       <input type="submit" value="Add Product" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
     </form>
     <hr class="border border-grey-light my-6" />
@@ -103,8 +146,8 @@ export default {
       if(!value) {
         return
       }
-      this.$http.secured.post('/api/v1/products/', { 
-        product: { 
+      this.$http.secured.post('/api/v1/products/', {
+        product: {
           name: this.newProduct.name,
           price: this.newProduct.price,
           description: this.newProduct.description,
@@ -113,7 +156,14 @@ export default {
           barcode: this.newProduct.barcode,
           stock: this.newProduct.stock,
           rating_value: 0,
-          rating_count: 0
+          rating_count: 0,
+          brand: this.newProduct.brand,
+          height: this.newProduct.height,
+          width: this.newProduct.width,
+          large: this.newProduct.large,
+          weight: this.newProduct.weight,
+          recommended_age: this.newProduct.recommended_age,
+          number_of_player:this.newProduct.number_of_player
           } })
 
         .then(response => {

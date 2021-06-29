@@ -32,7 +32,7 @@
           <input type="text" v-model="address.postal_code" class="input" id="postal_code" placeholder="1111111">
         </div>
         <div>
-          <button type="submit" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">Agregar dirección</button>
+          <button @click="$router.push({path: '/control_panel#'})" v-on:click="createAddress" v-bind:option="option" type="submit" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">Agregar dirección</button>
         </div>
       </form>
     </div>
@@ -48,7 +48,8 @@ export default {
       address: {},
       cities: [],
       states: [],
-      regions: []
+      regions: [],
+      option: 'addresses'
     }
   },
   created () {
@@ -73,8 +74,9 @@ export default {
         postal_code: this.address.postal_code,
         user_id: '1'
       })
+      .then(alert('Dirección Creada'))
       .then(response => this.error = response.status)
-    }
+    },
   }
 }
 </script>
