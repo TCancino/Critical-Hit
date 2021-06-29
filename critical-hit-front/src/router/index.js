@@ -8,6 +8,7 @@ import LandingPage from '@/components/home/LandingPage.vue'
 import Catalog from '@/components/catalog/Catalog.vue'
 import Product from '@/components/catalog/Product.vue'
 import CreateProduct from '@/components/inventory/CreateProduct.vue'
+import EditProduct from '@/components/inventory/EditProduct.vue'
 import EditForm from '@/components/controlPanel/EditForm.vue'
 import Addresses from '@/components/controlPanel/Addresses.vue'
 import AddressForm from '@/components/controlPanel/AddressForm.vue'
@@ -69,6 +70,11 @@ export default new Router({
       name: 'Product',
       component: Product,
       props: true
+    },
+    {
+      path: '/product/:id/edit',
+      name: 'Product Edit',
+      component: EditProduct,
     },
     {
       path: '/edit_form',

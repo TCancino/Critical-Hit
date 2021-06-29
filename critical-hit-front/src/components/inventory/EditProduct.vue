@@ -1,53 +1,53 @@
 <template>
   <div class="max-w-md m-auto py-10">
     <div class="text-red" v-if="error">{{ error }}</div>
-    <h3 class="font-mono font-regular text-3xl mb-4">Agregar Producto</h3>
-    <form action="" @submit.prevent="addProduct">
+    <h3 class="font-mono font-regular text-3xl mb-4">Editar Producto</h3>
+    <form action="" @submit.prevent="editProduct">
       <div class="mb-6">
         <input class="input"
           autofocus autocomplete="off"
           placeholder="Nombre del producto"
-          v-model="newProduct.name" />
+          v-model="product.name" />
       </div>
       <div class="mb-6">
         <input class="input"
           autofocus autocomplete="off"
           placeholder="Precio"
-          v-model="newProduct.price" />
+          v-model="product.price" />
       </div>
       <div class="mb-6">
         <input class="input"
           autofocus autocomplete="off"
           placeholder="Descripción"
-          v-model="newProduct.description" />
+          v-model="product.description" />
       </div>
       <div class="mb-6">
         <input class="input"
           autofocus autocomplete="off"
           placeholder="SKU"
-          v-model="newProduct.sku" />
+          v-model="product.sku" />
       </div>
       <div class="mb-6">
         <input class="input"
           autofocus autocomplete="off"
           placeholder="Código de barras"
-          v-model="newProduct.barcode" />
+          v-model="product.barcode" />
       </div>
       <div class="mb-6">
         <input class="input"
           autofocus autocomplete="off"
           placeholder="Stock"
-          v-model="newProduct.stock" />
+          v-model="product.stock" />
       </div>
       <div class="mb-6">
         <input class="input"
           autofocus autocomplete="off"
           placeholder="Estado"
-          v-model="newProduct.status" />
+          v-model="product.status" />
       </div>
       <h3 class=" font-monomb-6 ml-6">Especificaciones del producto:</h3>
         <div class="mb-6">
-          <select v-model="selectedCategory">
+          <select v-model="product.category_id">
             <option disabled value="">Selecciona una categoría</option>
             <option v-for="category in categories" v-bind:key="category.id">{{category.name}}</option>
           </select>
@@ -57,45 +57,45 @@
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Marca"
-            v-model="newProduct.brand" />
+            v-model="product.brand" />
         </div>
         <div class="mb-6">
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Alto"
-            v-model="newProduct.height" />
+            v-model="product.height" />
         </div>
         <div class="mb-6">
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Ancho"
-            v-model="newProduct.width" />
+            v-model="product.width" />
         </div>
         <div class="mb-6">
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Largo"
-            v-model="newProduct.large" />
+            v-model="product.large" />
         </div>
         <div class="mb-6">
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Peso"
-            v-model="newProduct.weight" />
+            v-model="product.weight" />
         </div>
         <div class="mb-6">
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Edad recomendada"
-            v-model="newProduct.recommended_age" />
+            v-model="product.recommended_age" />
         </div>
         <div class="mb-6">
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Cantidad de jugadores"
-            v-model="newProduct.number_of_player" />
+            v-model="product.number_of_player" />
         </div>
-      <input type="submit" value="Add Product" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
+      <input type="submit" value="Edit Product" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
     </form>
     <hr class="border border-grey-light my-6" />
   </div>
@@ -106,7 +106,7 @@ export default {
   name: 'Products',
   data () {
     return {
-      newProduct: [],
+      product: [],
       error: '',
       editedArtist: '',
       categories: [],
@@ -114,6 +114,12 @@ export default {
     }
   },
   created(){
+    this.$http.secured.get(`/api/v1/products/${this.$route.params.id}`)
+      .then(response => {
+        this.product = response.data.product
+        this.ratings = response.data.ratings
+      })
+      .catch(error => this.setError(error, 'Something went wrong'))
     this.$http.secured.get('/api/v1/categories')
         .then(response => { this.categories = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
@@ -122,37 +128,36 @@ export default {
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },
-    addProduct () {
-      const value = this.newProduct
+    editProduct () {
+      const value = this.product
       if(!value) {
         return
       }
-      this.$http.secured.post('/api/v1/products/', {
+      this.$http.secured.patch(`/api/v1/products/${this.$route.params.id}`, {
         product: {
-          name: this.newProduct.name,
-          price: this.newProduct.price,
-          description: this.newProduct.description,
-          sku: this.newProduct.sku,
-          status: this.newProduct.status,
-          barcode: this.newProduct.barcode,
-          stock: this.newProduct.stock,
+          name: this.product.name,
+          price: this.product.price,
+          description: this.product.description,
+          sku: this.product.sku,
+          status: this.product.status,
+          barcode: this.product.barcode,
+          stock: this.product.stock,
           rating_value: 0,
           rating_count: 0,
-          brand: this.newProduct.brand,
-          height: this.newProduct.height,
-          width: this.newProduct.width,
-          large: this.newProduct.large,
-          weight: this.newProduct.weight,
-          recommended_age: this.newProduct.recommended_age,
-          number_of_player:this.newProduct.number_of_player,
+          brand: this.product.brand,
+          height: this.product.height,
+          width: this.product.width,
+          large: this.product.large,
+          weight: this.product.weight,
+          recommended_age: this.product.recommended_age,
+          number_of_player:this.product.number_of_player,
           category_id: this.selectedCategory.id
           } })
 
         .then(response => {
-          this.newProduct = ''
+          this.product = response.data
         })
         .catch(error => this.setError(error, 'Cannot create artist'))
-        console.log(this.selectedCategory)
     },
   }
 }
