@@ -47,6 +47,14 @@
       </div>
       <h3 class=" font-monomb-6 ml-6">Especificaciones del producto:</h3>
         <div class="mb-6">
+          <select v-model="selectedCategory">
+            <div v-for="category in categories" v-bind:key="category.id">
+              <option>{{category.name}}</option>
+            </div>
+          </select>
+          <br>
+        </div>
+        <div class="mb-6">
           <input class="input"
             autofocus autocomplete="off"
             placeholder="Marca"
@@ -91,33 +99,6 @@
       <input type="submit" value="Add Product" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
     </form>
     <hr class="border border-grey-light my-6" />
-
-    <ul class="list-reset mt-4">
-      <li class="py-4" v-for="product in products" :key="product.id" :product="product">
-
-        <div class="flex items-center justify-between flex-wrap">
-          <p class="block flex-1 font-mono font-semibold flex items-center ">
-            <svg class="fill-current text-indigo w-6 h-6 mr-2" viewBox="0 0 20 20" width="20" height="20"><title>music artist</title><path d="M15.75 8l-3.74-3.75a3.99 3.99 0 0 1 6.82-3.08A4 4 0 0 1 15.75 8zm-13.9 7.3l9.2-9.19 2.83 2.83-9.2 9.2-2.82-2.84zm-1.4 2.83l2.11-2.12 1.42 1.42-2.12 2.12-1.42-1.42zM10 15l2-2v7h-2v-5z"></path></svg>
-            {{ product.name }}
-          </p>
-
-          <button class="bg-tranparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded"
-          @click.prevent="editArtist(product)">Edit</button>
-
-          <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
-         @click.prevent="removeArtist(product)">Delete</button>
-        </div>
-
-        <div v-if="product == editedArtist">
-          <form action="" @submit.prevent="updateArtist(product)">
-            <div class="mb-6 p-4 bg-white rounded border border-grey-light mt-4">
-              <input class="input" v-model="product.name" />
-              <input type="submit" value="Update" class=" my-2 bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
-            </div>
-          </form>
-        </div>
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -129,13 +110,9 @@ export default {
       newProduct: [],
       error: '',
       editedArtist: '',
-      products: []
+      categories: this.getCategories(),
+      selectedCategory: []
     }
-  },
-  created () {
-    this.$http.secured.get('/api/v1/products')
-        .then(response => { this.products = response.data })
-        .catch(error => this.setError(error, 'Something went wrong'))
   },
   methods: {
     setError (error, text) {
@@ -184,6 +161,11 @@ export default {
           this.newProduct = ''
         })
         .catch(error => this.setError(error, 'Cannot create artist'))
+    },
+    getCategories(){
+      this.$http.secured.get(`/api/v1/categories`)
+      .then(response => { this.categories = response.data })
+      .catch(error => this.setError(error, 'Cannot get categories'))
     },
     removeArtist (artist) {
       this.$http.secured.delete(`/api/v1/artists/${artist.id}`)

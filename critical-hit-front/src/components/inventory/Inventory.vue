@@ -58,5 +58,10 @@ export default {
         .catch(error => this.setError(error, 'Something went wrong'))
     }
   },
+  methods: {
+    setError (error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
+  },
 }
 </script>
