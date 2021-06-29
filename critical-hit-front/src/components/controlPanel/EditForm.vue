@@ -35,7 +35,7 @@
           <input type="password" v-model="user.password_confirmation" class="input" id="password_confirmation" placeholder="repetir contraseña">
         </div>
         <div>
-          <button type="submit" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">Change Password</button>
+          <button type="submit" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">Actualizar Datos</button>
         </div>
       </form>
     </div>

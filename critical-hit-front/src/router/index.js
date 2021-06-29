@@ -96,7 +96,8 @@ export default new Router({
     {
       path: '/control_panel',
       name: 'Control panel',
-      component: ControlPanel
+      component: ControlPanel,
+      props: true
     },
     {
       path: '/cart_form',
