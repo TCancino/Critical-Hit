@@ -52,7 +52,7 @@
                 </tr>
                 <tr>
                   <th>Largo</th>
-                  <td> {{ product.length }} </td>
+                  <td> {{ product.large }} </td>
                 </tr>
                 <tr>
                   <th>Peso</th>
