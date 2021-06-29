@@ -8,7 +8,7 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Estado</th>
+                    <th>En Stock</th>
                     <th>Eliminar</th>
                 </tr>
             </thead>

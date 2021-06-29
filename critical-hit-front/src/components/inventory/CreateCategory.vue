@@ -46,7 +46,7 @@ export default {
         }
         })
         .catch(error => this.setError(error, 'No se pudo crear la categoría'))
-        .then(alert('Dirección Creada'))
+        .then(alert('Categoría Creada'))
     },
   }
 }
