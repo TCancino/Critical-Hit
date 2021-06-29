@@ -95,7 +95,7 @@
             placeholder="Cantidad de jugadores"
             v-model="newProduct.number_of_player" />
         </div>
-      <input type="submit" value="Add Product" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
+      <input @click="$router.push({path: '/inventario'})" v-on:click="addProduct" type="submit" value="Add Product" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
     </form>
     <hr class="border border-grey-light my-6" />
   </div>
@@ -152,7 +152,7 @@ export default {
           this.newProduct = ''
         })
         .catch(error => this.setError(error, 'Cannot create artist'))
-        console.log(this.selectedCategory)
+        .then(alert('Producto Creado'))
     },
   }
 }
