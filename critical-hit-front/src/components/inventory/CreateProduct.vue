@@ -47,11 +47,15 @@
       </div>
       <h3 class=" font-monomb-6 ml-6">Especificaciones del producto:</h3>
         <div class="mb-6">
+          {{categories}}
           <select v-model="selectedCategory">
-            <div v-for="category in categories" v-bind:key="category.id">
+            <option disabled value="">Selecciona una categoría</option>
+            <tr v-for="category in categories" v-bind:key="category.id">
+              {{category}}
               <option>{{category.name}}</option>
-            </div>
+            </tr>
           </select>
+          <span>Seleccionado: {{ selected }}</span>
           <br>
         </div>
         <div class="mb-6">
@@ -110,9 +114,14 @@ export default {
       newProduct: [],
       error: '',
       editedArtist: '',
-      categories: this.getCategories(),
-      selectedCategory: []
+      categories: [],
+      selectedCategory: ''
     }
+  },
+  created(){
+    this.$http.secured.get('/api/v1/categories')
+        .then(response => { this.categories = response.data })
+        .catch(error => this.setError(error, 'Something went wrong'))
   },
   methods: {
     setError (error, text) {
@@ -149,39 +158,6 @@ export default {
         })
         .catch(error => this.setError(error, 'Cannot create artist'))
     },
-    addArtist () {
-      const value = this.newProduct
-      if (!value) {
-        return
-      }
-      this.$http.secured.post('/api/v1/artists/', { artist: { name: this.newProduct.name } })
-
-        .then(response => {
-          this.artists.push(response.data)
-          this.newProduct = ''
-        })
-        .catch(error => this.setError(error, 'Cannot create artist'))
-    },
-    getCategories(){
-      this.$http.secured.get(`/api/v1/categories`)
-      .then(response => { this.categories = response.data })
-      .catch(error => this.setError(error, 'Cannot get categories'))
-    },
-    removeArtist (artist) {
-      this.$http.secured.delete(`/api/v1/artists/${artist.id}`)
-        .then(response => {
-          this.artists.splice(this.artists.indexOf(artist), 1)
-        })
-        .catch(error => this.setError(error, 'Cannot delete artist'))
-    },
-    editArtist (artist) {
-      this.editedArtist = artist
-    },
-    updateArtist (artist) {
-      this.editedArtist = ''
-      this.$http.secured.patch(`/api/v1/artists/${artist.id}`, { artist: { title: artist.name } })
-        .catch(error => this.setError(error, 'Cannot update artist'))
-    }
   }
 }
 </script>

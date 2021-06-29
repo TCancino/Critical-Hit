@@ -23,18 +23,12 @@
 
 <script>
 export default {
-  name: 'Categories',
+  name: 'CreateCategory',
   data () {
     return {
       newCategory: [],
       error: '',
-      categories: []
     }
-  },
-  created () {
-    this.$http.secured.get('/api/v1/create_category')
-        .then(response => { this.categories = response.data })
-        .catch(error => this.setError(error, 'Something went wrong'))
   },
   methods: {
     setError (error, text) {
@@ -45,15 +39,11 @@ export default {
       if(!value) {
         return
       }
-      this.$http.secured.post('/api/v1/create_category/', {
-        product: {
+      this.$http.secured.post('/api/v1/categories', {
+        category: {
           name: this.newCategory.name,
           description: this.newCategory.description,
-          } })
-
-        .then(response => {
-          this.categories.push(response.data)
-          this.newCategory = ''
+        } 
         })
         .catch(error => this.setError(error, 'No se pudo crear la categoría'))
     },

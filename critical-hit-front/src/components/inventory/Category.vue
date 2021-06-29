@@ -44,7 +44,7 @@ export default {
       this.$router.replace('/')
     } else {
       this.$http.secured.get('/api/v1/categories')
-        .then(response => { this.products = response.data })
+        .then(response => { this.categories = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
     }
   },
