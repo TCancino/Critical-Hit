@@ -16,7 +16,7 @@
                 </td>
               </tr>
               <tr v-show="items.length === 0">
-                <td colspan="4" class="text-center">Cart is empty</td>
+                <td colspan="4" class="text-center">El carrito está vacío</td>
               </tr>
               <tr v-show="items.length > 0">
                 <td></td>
