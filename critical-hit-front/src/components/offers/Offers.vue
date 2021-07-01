@@ -25,7 +25,7 @@
           </td>
           <td style="width: 5%;">
             <button>
-              <font-awesome-icon icon="trash" />
+              <font-awesome-icon icon="trash" @click="destroyOffer(offer.id)" />
             </button>
           </td>
         </tr>
@@ -52,6 +52,14 @@ export default {
     }
   },
   methods: {
+    destroyOffer(offer) {
+      console.log(offer)
+      this.$http.secured.delete(`/api/v1/offers/${offer}`)
+      .then(response => {
+        this.offers.splice(this.offers.indexOf(offer),1)
+      })
+      .catch(error => this.setError(error, 'No se pudo eliminar la oferta'))
+    },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },

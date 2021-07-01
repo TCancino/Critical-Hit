@@ -31,6 +31,11 @@ module Api
         end
       end
 
+      def destroy
+        @offer = Offer.find_by(params[:id])
+        @offer.destroy
+      end
+
       private
       def set_offer
         @offer = Offer.find(params[:id])
