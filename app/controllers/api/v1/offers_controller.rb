@@ -1,14 +1,17 @@
 module Api
   module V1
     class OffersController < ApplicationController
+      before_action :authorize_access_request!, except: %i[show index]
+      before_action :set_offer, only: %i[show update destroy]
+
       def index
         @offers = Offer.all
         render json: @offers
       end
 
       def show
-        @offer = Offer.find(offer_params)
-        render json: @offer
+        @offer = Offer.find(params[:id])
+        render json: { offer: @offer, status: 'ok', message: 'success'}
       end
 
       def update
@@ -29,6 +32,9 @@ module Api
       end
 
       private
+      def set_offer
+        @offer = Offer.find(params[:id])
+      end
 
       def offer_params
         params.require(:offer).permit(

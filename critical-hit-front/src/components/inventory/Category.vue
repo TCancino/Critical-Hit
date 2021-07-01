@@ -6,18 +6,20 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Descripción</th>
+                    <th style="width: 5%;">Editar</th>
+                    <th style="width: 5%;">Borrar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="cat in categories" v-bind:key="cat.id">
                     <td>{{cat.name}}</td>
                     <td>{{cat.description}}</td>
-                    <td>
+                    <td style="width: 5%;">
                       <button>
                         <font-awesome-icon icon="edit" />
                       </button>
                     </td>
-                    <td>
+                    <td style="width: 5%;">
                       <button>
                         <font-awesome-icon icon="trash" />
                       </button>

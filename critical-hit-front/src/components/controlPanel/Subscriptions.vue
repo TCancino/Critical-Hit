@@ -9,14 +9,14 @@
                 <tr>
                     <th>Nombre</th>
                     <th>En Stock</th>
-                    <th>Eliminar</th>
+                    <th style="width: 5%;">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="sub in subscriptions" v-bind:key="sub.id">
                     <td>{{sub.product.name}}</td>
                     <td>{{sub.product.status}}</td>
-                    <td>
+                    <td style="width: 5%;">
                       <button @click="destroySub(sub.subscription_id)">
                         <font-awesome-icon icon="trash" />
                       </button>
