@@ -32,7 +32,7 @@
                     </td>
                     <td style="width: 5%;">
                       <button>
-                        <font-awesome-icon icon="trash" />
+                        <font-awesome-icon icon="trash" @click="destroyAddress(address.id)" />
                       </button>
                     </td>
                 </tr>
@@ -59,6 +59,19 @@ export default {
         .then(response => { this.addresses = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
     }
+  },
+  methods: {
+    destroyAddress(address) {
+      console.log(address)
+      this.$http.secured.delete(`/api/v1/addresses/${address}`)
+      .then(response => {
+        this.addresses.splice(this.addresses.indexOf(address),1)
+      })
+      .catch(error => this.setError(error, 'No se pudo eliminar la oferta'))
+    },
+    setError (error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
   },
 }
 </script>
