@@ -2,6 +2,8 @@ module Api
   module V1
     class AddressesController < ApplicationController
       before_action :authorize_access_request!
+      before_action :set_address, only: %i[show update destroy]
+
       #GET /addresses
       def index
         @addresses = current_user.addresses.all
@@ -30,8 +32,9 @@ module Api
           render @address.errors, status: :unprocessable_entity
         end
       end
-      #DELETE /address/:id
+
       def destroy
+        @address = Address.find_by(params[:id])
         @address.destroy
       end
 
@@ -39,8 +42,18 @@ module Api
       def set_address
         @address = current_user.addresses.find(params[:id])
       end
+
       def address_params
-        params.require(:address).permit(:name, :address1, :address2, :state, :city, :region, :country, :user_id)
+        params.require(:address).permit(
+          :name,
+          :address1,
+          :address2,
+          :state,
+          :city,
+          :region,
+          :country,
+          :user_id
+        )
       end
     end
   end
