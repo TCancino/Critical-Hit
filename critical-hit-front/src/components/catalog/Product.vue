@@ -13,9 +13,6 @@
       <p>
         <a style="color:grey;"> SKU:{{product.sku}} </a>
       </p>
-      <div class="d-flex justify-content-center">
-        <star-rating :star-size="20"></star-rating>
-      </div>
       <div>Precio: ${{ formatPrice(product.price) }}</div>
       <div>Stock: {{product.stock}}</div>
       <div v-if="product.status == 'Disponible'">
@@ -68,7 +65,23 @@
                 </tr>
             </table>
           </b-tab>
-          <b-tab title="Comentarios" ><p v-for="rating in ratings " :key="rating.id">Valor:{{rating.value}} Comentario: {{rating.comment}}</p></b-tab>
+          <b-tab title="Comentarios" >
+            <table style="width:50%" cellpadding="10px" cellspacing="1px" padding="20px"
+              class="table-striped container" v-for="rating in ratings " :key="rating.id">
+              <tr>
+                <th>Valor</th>
+                <td> {{rating.value}}
+                  <div class="d-flex justify-content-center">
+                    <star-rating :star-size="20"></star-rating>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>Comentario</th>
+                <td> {{rating.comment}} </td>
+              </tr>
+            </table>
+          </b-tab>
           <b-tab title="Términos y condiciónes" ><p>Los consumidores podrán devolver un producto adquirido en Mercado Critical Hit dentro del plazo de 10 días contados desde su recepción, sin necesidad de invocar ninguna causa y siempre y cuando el producto no se haya deteriorado por un hecho imputable al consumidor.</p></b-tab>
         </b-tabs>
       </b-card>
@@ -93,7 +106,8 @@ export default {
   },
   components: {
     Ratings,
-    RatingForm
+    RatingForm,
+    StarRating
   },
   created () {
     this.$http.secured.get(`/api/v1/products/${this.$route.params.id}`)
@@ -137,9 +151,6 @@ export default {
     signedIn () {
       return localStorage.signedIn
     }
-  },
-  components: {
-    StarRating
   }
 }
 </script>
