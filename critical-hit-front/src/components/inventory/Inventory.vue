@@ -29,7 +29,7 @@
                     </td>
                     <td style="width: 5%;">
                       <button>
-                        <font-awesome-icon icon="trash" />
+                        <font-awesome-icon icon="trash" @click="destroyProduct(product.id)" />
                       </button>
                     </td>
                 </tr>
@@ -59,6 +59,14 @@ export default {
     }
   },
   methods: {
+    destroyProduct(product) {
+      console.log(product)
+      this.$http.secured.delete(`/api/v1/products/${product}`)
+      .then(response => {
+        this.products.splice(this.products.indexOf(product),1)
+      })
+      .catch(error => this.setError(error, 'No se pudo eliminar el produccto'))
+    },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },

@@ -34,11 +34,15 @@ module Api
         end
       end
 
+      def destroy
+        @product = Product.find_by(id: params[:id])
+        @product.destroy
+      end
+
       private
       def set_product
         @product = Product.find(params[:id])
       end
-
 
       def product_params
         params.require(:product).permit(
