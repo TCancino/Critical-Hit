@@ -21,7 +21,7 @@
                     </td>
                     <td style="width: 5%;">
                       <button>
-                        <font-awesome-icon icon="trash" />
+                        <font-awesome-icon icon="trash" @click="destroyCat(cat.id)" />
                       </button>
                     </td>
                 </tr>
@@ -49,6 +49,19 @@ export default {
         .then(response => { this.categories = response.data })
         .catch(error => this.setError(error, 'Something went wrong'))
     }
+  },
+  methods: {
+    destroyCat(category) {
+      console.log(category)
+      this.$http.secured.delete(`/api/v1/categories/${category}`)
+      .then(response => {
+        this.categories.splice(this.categories.indexOf(category),1)
+      })
+      .catch(error => this.setError(error, 'No se pudo eliminar el produccto'))
+    },
+    setError (error, text) {
+      this.error = (error.response && error.response.data && error.response.data.error) || text
+    },
   },
 }
 </script>
