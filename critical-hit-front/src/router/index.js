@@ -20,6 +20,7 @@ import CartForm from '@/components/shoppingCart/CartForm.vue'
 import Category from '@/components/inventory/Category.vue'
 import CreateCategory from '@/components/inventory/CreateCategory.vue'
 import Offers from '@/components/offers/Offers.vue'
+import EditOffer from '@/components/offers/EditOffer.vue'
 
 Vue.use(Router)
 
@@ -127,6 +128,11 @@ export default new Router({
       path: '/offers',
       name: 'Offers',
       component: Offers
+    },
+    {
+      path: '/offer/:id/edit',
+      name: 'Offer Edit',
+      component: EditOffer,
     }
   ]
 })

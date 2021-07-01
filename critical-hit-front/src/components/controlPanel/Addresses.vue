@@ -13,8 +13,8 @@
                     <th>Comuna</th>
                     <th>Ciudad</th>
                     <th>Región</th>
-                    <th>Editar</th>
-                    <th>Borrar</th>
+                    <th style="width: 5%;">Editar </th>
+                    <th style="width: 5%;">Borrar</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,12 +25,12 @@
                     <td>{{address.state}}</td>
                     <td>{{address.city}}</td>
                     <td>{{address.region}}</td>
-                    <td>
+                    <td style="width: 5%;">
                       <button>
                         <font-awesome-icon icon="edit" />
                       </button>
                     </td>
-                    <td>
+                    <td style="width: 5%;">
                       <button>
                         <font-awesome-icon icon="trash" />
                       </button>

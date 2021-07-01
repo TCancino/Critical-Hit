@@ -4,30 +4,30 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>SKU</th>
-                    <th>Código de barra</th>
-                    <th>Estado</th>
-                    <th>Stock</th>
-                    <th>Editar</th>
-                    <th>Borrar</th>
+                    <th style="width: 20%;">Nombre</th>
+                    <th style="width: 10%;">Precio</th>
+                    <th style="width: 10%;">SKU</th>
+                    <th style="width: 15%;">Código de barra</th>
+                    <th style="width: 10%;">Estado</th>
+                    <th style="width: 5%;">Stock</th>
+                    <th style="width: 5%;">Editar</th>
+                    <th style="width: 5%;" >Borrar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="product in products" v-bind:key="product.id">
-                    <td>{{product.name}}</td>
-                    <td>{{product.price}}</td>
-                    <td>{{product.sku}}</td>
-                    <td>{{product.barcode}}</td>
-                    <td>{{product.status}}</td>
-                    <td>{{product.stock}}</td>
-                    <td>
+                    <td style="width: 20%;">{{product.name}}</td>
+                    <td style="width: 10%;">{{product.price}}</td>
+                    <td style="width: 10%;">{{product.sku}}</td>
+                    <td style="width: 15%;">{{product.barcode}}</td>
+                    <td style="width: 10%;">{{product.status}}</td>
+                    <td style="width: 5%;">{{product.stock}}</td>
+                    <td style="width: 5%;">
                       <button>
                         <font-awesome-icon @click="$router.push(`/product/${product.id}/edit`)" icon="edit" />
                       </button>
                     </td>
-                    <td>
+                    <td style="width: 5%;">
                       <button>
                         <font-awesome-icon icon="trash" />
                       </button>
