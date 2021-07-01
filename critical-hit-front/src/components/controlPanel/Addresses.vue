@@ -39,7 +39,7 @@
             </tbody>
         </table>
       <div class="text-right">
-        <button @click="$router.push({path: '/addresses/new'})" class="btn btn-primary" >Agregar Direccion</button>
+        <button @click="$router.push({path: '/addresses/new'})" class="btn btn-primary" >Agregar Dirección</button>
       </div>
     </div>
 </template>
